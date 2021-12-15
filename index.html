@@ -5,12 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Component</title>
+
+    <style>
+        #wrap-bar {
+            width: 500px;
+            margin: 24px;
+        }
+    </style>
 </head>
 <body>
     <!-- <div id="mordor"></div>  -->
     <label>asda</label>
     <custom-input></custom-input>
 
+    <br />
+
+    <div id="wrap-bar">
+        <state-bar class="state-bar"></state-bar>
+    </div>
+
+    <template id="statebar">
+        <style>
+            h3 {display: inline;}
+            .per {float: right;}
+            .bar {
+                background: #7d7d7e;
+                display: block;
+                height: 10px;
+                border: 1px solid rgba(238, 234, 30, 0.178);
+                border-radius: 3px;
+                overflow: hidden;
+                margin-top: 8px;
+                -webkit-box-shadow: 0 0 10px #e73f2191;
+                box-shadow: 0 0 10px #e73f2191;
+            }
+            .bar span {
+                height: 9px;
+                float:left;
+                background: tomato;
+            }
+            .JavaScript {
+                width: 80%;
+                -webkit-animation: javascript 2s;
+                animation: javascript 2s;
+            }
+            @-webkit-keyframes javascript {
+                0% {width: 0%}
+                100% {width: 80%}
+            }
+
+            @keyframes javascript {
+                0%{width:0%}
+                100%{width:80%}
+            }
+        </style>
+        <h3>JavaScript</h3>
+        <span class="per">80%</span>
+        <span class="bar">
+            <span class="JavaScript"></span>
+        </span>
+    </template>
 
     <template id="template1">
         <style>
@@ -33,6 +87,17 @@
 
     customElements.define("custom-input", 클래스)
 </script>
+
+<script>
+    class StateBar extends HTMLElement {
+        connectedCallback() {
+            this.attachShadow({mode: 'open'})
+            this.shadowRoot.append(statebar.content.cloneNode(true))
+        }
+    }
+    customElements.define('state-bar', StateBar)
+</script>
+
 <script>
 
     // Web Component ex
