@@ -7,10 +7,36 @@
     <title>Web Component</title>
 </head>
 <body>
-    <div id="mordor"></div> 
+    <!-- <div id="mordor"></div>  -->
+    <label>asda</label>
+    <custom-input></custom-input>
 
-    <script></script>
+
+    <template id="template1">
+        <style>
+            label{color:red;margin-right: 8px;}
+        </style>
+        <label>이메일을 입력하쇼</label><input>
+    </template>
 <script>
+/*     document.querySelector("#mordor").attachShadow({mode: 'open'})
+    document.querySelector("#mordor").shadowRoot.innerHTML = 
+    '<p>심연에서 왔도다</p>' */
+
+    class 클래스 extends HTMLElement {
+        connectedCallback() {
+            this.attachShadow({mode: 'open'})
+            // css inherit은 적용될 수 있음..
+            this.shadowRoot.append(template1.content.cloneNode(true))
+        }
+    }
+
+    customElements.define("custom-input", 클래스)
+</script>
+<script>
+
+    // Web Component ex
+    /* 
     class CustomInput extends HTMLElement {
         connectedCallback() {
             this.render();
@@ -31,9 +57,8 @@
             this.render();
         }
     }
-
-
-    customElements.define('custom-input', CustomInput);
+    customElements.define('custom-input', CustomInput); 
+    */
 </script>
 </body>
 </html>
