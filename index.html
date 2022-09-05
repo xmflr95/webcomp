@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Component</title>
 
+    <script src="UserInput.js" type="module"></script>
+
     <style>
         #wrap-bar {
             width: 500px;
@@ -14,15 +16,18 @@
     </style>
 </head>
 <body>
+    <user-input prop="Hi" ival="반갑습니다"></user-input>
+
     <!-- <div id="mordor"></div>  -->
-    <label>asda</label>
+    <!-- <label>Web Component</label>
+    <br />
     <custom-input></custom-input>
 
     <br />
 
     <div id="wrap-bar">
         <state-bar class="state-bar"></state-bar>
-    </div>
+    </div> -->
 
     <template id="statebar">
         <style>
@@ -70,7 +75,7 @@
         <style>
             label{color:red;margin-right: 8px;}
         </style>
-        <label>이메일을 입력하쇼</label><input>
+        <label>이메일을 입력하세요</label><input>
     </template>
 <script>
 /*     document.querySelector("#mordor").attachShadow({mode: 'open'})
